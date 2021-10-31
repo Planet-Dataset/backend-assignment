@@ -1,4 +1,8 @@
-# backend-assignment
+<img src="https://user-images.githubusercontent.com/28607713/139576077-5c322bfa-d71b-414b-9b63-ff4c53ec9a8d.png"
+     alt="planet-logo-white-no-bg"
+     width="120">
+
+# Planet backend-assignment
 Backend position skill assessment home assignment.
 
 ## Overview
