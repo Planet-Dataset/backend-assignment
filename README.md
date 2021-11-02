@@ -34,7 +34,22 @@ Therefore we will evaluate the assignment:
 ## Tasks
 
 ## Repository structure
+The code is laid down in a monorepo fashion with make commands for easier admin tasks. The two services
+that you can find find are the **api** and **service** services.
 
+The **api** service is an Express server with hot code reloading, while the **service** service is a
+generic Node setup that runs the script periodically and that you may use -or not- for any recurring
+process; this later service can be run manually without the cron job.
+
+- The _services/api_ directory holds the code for the API. The following make commands are available:
+     - `backend-build` Builds the corresponding Docker images.
+     - `backend-up` Raises the platform.
+     - `backend-up-slim` Raises the platform without the service _service_ running in the background (just the db and API).
+     - `backend-down` Shuts down the platform. _Requires having the platform up (you can use make backend-up)_
+     - `backend-dump` Dumps the database contents to a _dump_ folder. _Requires having the platform up (you can use make backend-up)_
+     - `backend-load` Loads the database contents from a _dump_ folder. _Requires having the platform up (you can use make backend-up)_
+     - `backend-dbshell` Connects to the database shell. _Requires having the platform up (you can use make backend-up)_
+     - `backend-test` Runs the API tests with database dump and restore. _Requires having the platform up (you can use make backend-up)_
 ---
 
 # backend-assignment
