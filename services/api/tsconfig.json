@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "strict": false,
+        "noImplicitReturns": true,
+        "noImplicitAny": false,
+        "module": "es6",
+        "moduleResolution": "node",
+        "target": "es6",
+        "allowJs": true,
+        "types": [
+            "node"
+        ],
+        "baseUrl": "./",
+        "paths": {
+            "Constants/*": ["src/constants/*"],
+            "Modules/*": ["src/modules/*"],
+            "Environment": ["src/environments/index.js"],
+            "Config": ["src/modules/config/index.js"],
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
