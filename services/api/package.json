@@ -7,15 +7,22 @@
   "author": "jancho@usal.es",
   "license": "MIT",
   "private": false,
+  "clean": "rm dist/bundle.js",
+  "type": "module",
   "scripts": {
     "build": "webpack --config webpack.prod.cjs",
-    "start": "NODE_ENV=development nodemon"
+    "clean": "rm -f dist/bundle.js",
+    "prestart": "npm run clean",
+    "start": "NODE_ENV=development webpack --config webpack.config.cjs",
+    "poststart": "webpack --config webpack.dev.cjs"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@types/node": "^16.11.6",
     "babel-jest": "^27.3.1",

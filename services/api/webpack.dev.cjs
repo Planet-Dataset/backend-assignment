@@ -6,12 +6,20 @@ const common = require('./webpack.config.cjs');
 const config = merge(common, {
   mode: 'development',
   watch: true,
+  watchOptions: {
+    poll: 1000,
+    ignored: /node_modules/
+  },
+  snapshot: {
+    managedPaths: [],
+    immutablePaths: [],
+  },
   plugins: [
     new WebpackShellPluginNext({
       onBuildEnd:{
-        scripts: ['yarn start'],
-        blocking: true,
-        parallel: false
+        scripts: ['nodemon -w dist dist/bundle.cjs'],
+        blocking: false,
+        parallel: true
       }
     })
   ]

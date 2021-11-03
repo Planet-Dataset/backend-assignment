@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals')
 const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 const path = require('path');
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://root:pass@localhost:27017/testdb';
 var PACKAGE = require('./package.json');
 var version = PACKAGE.version;
 
@@ -13,10 +14,7 @@ const config = {
     __filename: false,  // and __filename return blank or /
   },
   externals: [nodeExternals()], // Need this to avoid error when working with Express
-  entry: {
-    path: path.resolve(__dirname, 'src'),
-    filename: 'index.ts'
-  },
+  entry: path.resolve(__dirname, 'src', 'index.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.cjs'
@@ -44,9 +42,10 @@ const config = {
     ],
   },
   plugins: [
-    new webpack.ProgressPlugin(),
+    // new webpack.ProgressPlugin(),
     new webpack.DefinePlugin({
-        VERSION: JSON.stringify(version),
+      VERSION: JSON.stringify(version),
+      MONGODB_URI: JSON.stringify(MONGODB_URI),
     }),
   ],
 };

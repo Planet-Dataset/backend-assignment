@@ -13,12 +13,7 @@
             "node"
         ],
         "baseUrl": "./",
-        "paths": {
-            "Constants/*": ["src/constants/*"],
-            "Modules/*": ["src/modules/*"],
-            "Environment": ["src/environments/index.js"],
-            "Config": ["src/modules/config/index.js"],
-        }
+        "paths": {}
     },
     "include": [
         "./src/**/*"
