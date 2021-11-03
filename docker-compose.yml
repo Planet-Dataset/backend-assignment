@@ -19,7 +19,7 @@ services:
     build:
       context: ./services/service
       dockerfile: ./Dockerfile
-    # command: sh -c "call the script to setup the cron and execute the script"
+    command: sh -c "crond -b -f"
     volumes:
       - ./services/service/src:/app/src
     depends_on:

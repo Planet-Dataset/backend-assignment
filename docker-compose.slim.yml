@@ -13,17 +13,6 @@ services:
       - ./services/api/src:/app/src
     depends_on:
       - mongodb
-  service:
-    image: home-assignment-service
-    container_name: home-assignment-service
-    build:
-      context: ./services/service
-      dockerfile: ./Dockerfile
-    command: sh -c "yarn build"
-    volumes:
-      - ./services/service/src:/app/src
-    depends_on:
-      - mongodb
   mongodb:
     image: mongo:4.4.3
     container_name: home-assignment-db

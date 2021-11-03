@@ -21,9 +21,9 @@ service-build: deps
 	docker-compose build
 
 service-run: deps
-	docker-compose -f docker-compose.slim.yml run service sh -c "yarn start"
+	docker-compose run service sh -c "yarn start"
 
 service-dev: deps
-	docker-compose -f docker-compose.slim.yml run service sh -c "yarn dev"
+	docker-compose run service sh -c "yarn dev"
 
 $PHONY: deps
