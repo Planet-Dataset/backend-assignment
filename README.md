@@ -7,7 +7,7 @@ Backend position skill assessment home assignment.
 
 ## Overview
 This repository holds the basic project structure for implementing a NodeJS based API and service
-used in a fictitious software solution that provides scrapping services.
+used in a fictitious software solution that provides stock exchange data services.
 
 Disclaimer: The purpose and usage of this repo is solely for insight adquisition regarding problem-solving,
 and does not represent an existing and ongoing implementation task.
@@ -30,8 +30,21 @@ Therefore we will evaluate the assignment:
   doing) will be positively taken into account.
 
 ## Context
+The solution you are required to design and implement is geared towards collecting historic exchange
+prices from the currencies the API user wants to EUR. With this in mind we need a system that provides
+an API for adding, removing and listing the currencies that being followed at the moment, and an
+additional endpoint for retrieving such data.
+
+> We recommend using the [alphavantage API](https://www.alphavantage.co/) for retrieving the data as
+> it is free and the endpoint for retrieving the data is well documented and easy to use.
+> _See the docs: [https://www.alphavantage.co/documentation/#crypto-exchange](https://www.alphavantage.co/documentation/#crypto-exchange)_
 
 ## Tasks
+The functionality of the platform can be summarized in the following tasks:
+- Implement three endpoints for adding (by the currency code), removing and listing the followed currencies.
+- Implement an endpoint for retrieving the exchange price history of the followed currencies. This endpoint
+     must allow specifying the time range, the currencies to be included and 
+- Implement the periodic historic data retrieval.
 
 ## Repository structure
 The code is laid down in a monorepo fashion with make commands for easier admin tasks. The two services
@@ -50,6 +63,11 @@ process; this later service can be run manually without the cron job.
      - `backend-load` Loads the database contents from a _dump_ folder. _Requires having the platform up (you can use make backend-up)_
      - `backend-dbshell` Connects to the database shell. _Requires having the platform up (you can use make backend-up)_
      - `backend-test` Runs the API tests with database dump and restore. _Requires having the platform up (you can use make backend-up)_
+
+- The _services/services_ directory holds the code for the API. The following make commands are available:
+     - `service-build` Builds the corresponding Docker images.
+     - `backend-run` Executes just once the service.. _Requires having the platform up (you can use make backend-up)_
+     - `backend-dev` Executes the service each time the code changes. _Requires having the platform up (you can use make backend-up)_
 ---
 
 # backend-assignment
