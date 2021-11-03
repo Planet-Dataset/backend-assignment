@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals')
 const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 const path = require('path');
-var MONGODB_URI = process.env.MONGODB_URI;
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://root:pass@localhost:27017/testdb';
 var PACKAGE = require('./package.json');
 var version = PACKAGE.version;
 

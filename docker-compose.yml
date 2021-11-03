@@ -10,7 +10,18 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./services/api:/src
+      - ./services/api/src:/app/src
+    depends_on:
+      - mongodb
+  service:
+    image: home-assignment-service
+    container_name: home-assignment-service
+    build:
+      context: ./services/service
+      dockerfile: ./Dockerfile
+    # command: sh -c "call the script to setup the cron and execute the script"
+    volumes:
+      - ./services/service/src:/app/src
     depends_on:
       - mongodb
   mongodb:

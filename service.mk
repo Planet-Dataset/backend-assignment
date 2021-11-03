@@ -13,3 +13,17 @@ ifndef DOCKER_COMPOSE
 	@echo "docker-compose is not available. Please install docker-compose"
 	@exit 1
 endif
+
+DB_USER=root
+DB_PASS=pass
+
+service-build: deps
+	docker-compose build
+
+service-run: deps
+	docker-compose -f docker-compose.slim.yml run service sh -c "yarn start"
+
+service-dev: deps
+	docker-compose -f docker-compose.slim.yml run service sh -c "yarn dev"
+
+$PHONY: deps
