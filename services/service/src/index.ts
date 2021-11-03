@@ -32,3 +32,4 @@ connectToDatabase(MONGODB_URI);
 // [Script execution]
 
 console.log('Executing service...')
+process.exit(0);

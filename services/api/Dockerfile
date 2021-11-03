@@ -5,8 +5,7 @@ COPY . /app
 WORKDIR /app
 
 # Install the dependenciess
+ENV MONGODB_URI="mongodb://home-assignment-db:27017/testdb"
 RUN yarn install
-
-ENV MONGODB_URI="mongodb://root:pass@localhost:27017/testdb"
 
 EXPOSE 8080
