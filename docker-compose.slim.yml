@@ -18,8 +18,10 @@ services:
     container_name: home-assignment-db
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: pass
+      #MONGO_INITDB_ROOT_USERNAME: root
+      MONGODB_USER: root
+      MONGODB_PASSWORD: pass
+      #MONGO_INITDB_ROOT_PASSWORD: pass
     ports:
       - 27017:27017
     volumes:
