@@ -1,13 +1,13 @@
 DB_USER=root
 DB_PASS=pass
 
-service-build:
+service-build: deps
 	docker-compose build
 
-service-run:
+service-run: deps
 	docker-compose run service sh -c "yarn start"
 
-service-dev:
+service-dev: deps
 	docker-compose run service sh -c "yarn dev"
 
-$PHONY: service-build service-run service-dev
+$PHONY: deps
