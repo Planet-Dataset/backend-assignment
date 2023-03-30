@@ -1,16 +1,15 @@
-import * as path from 'path';
-import * as express from 'express';
-import * as mongoose from 'mongoose';
-
+import express, { Application, Request, Response } from "express";
+import * as mongoose from "mongoose";
 
 // [DB Connection]
 
-declare var MONGODB_URI: string;
+const MONGODB_URI: string =
+  process.env.MONGODB_URI || "mongodb://localhost:27017";
 
 /**
  * connectToDatabase
  * Configures the global MongoDB connection based on the provided secrets.
- * 
+ *
  * @returns Promise<string>
  */
 async function connectToDatabase(connectionUri: string) {
@@ -18,32 +17,29 @@ async function connectToDatabase(connectionUri: string) {
     // From mongoose@6.x.x onwards useNewUrlParser, useUnifiedTopology,
     // useCreateIndex are deprecated and default to true
     mongoose
-    .connect(connectionUri)
-      .then(() =>
-        resolve(connectionUri)
-      )
+      .connect(connectionUri)
+      .then(() => resolve(connectionUri))
       .catch((error: any) => {
-        console.log(error)
-        reject(`${connectionUri}: ${error}`)
+        console.log(error);
+        reject(`${connectionUri}: ${error}`);
       });
-  })
+  });
 }
 connectToDatabase(MONGODB_URI);
 
 // [Express setup]
 
-const app = express(), DIST_DIR = __dirname;
-app.use(express.static(DIST_DIR));
+const app: Application = express();
 app.use(express.json());
 
-app.get('/health', async (req, res) => {
-  res.status(200).json({healthy: true});
+app.get("/health", async (req: Request, res: Response) => {
+  res.status(200).json({ healthy: true });
 });
 
 // [Express start]
 
-const PORT: number | string = process.env.PORT || 8080
+const PORT: number | string = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`App listening to ${PORT}....`)
-  console.log('Press Ctrl+C to quit.')
-})
+  console.log(`App listening to ${PORT}....`);
+  console.log("Press Ctrl+C to quit.");
+});
