@@ -4,6 +4,9 @@ DB_PASS=pass
 backend-build:
 	docker-compose build
 
+backend-dev:
+	docker-compose -f docker-compose.slim.yml up
+
 backend-build-slim:
 	docker-compose -f docker-compose.slim.yml build
 

@@ -6,7 +6,7 @@ services:
     build:
       context: ./services/api
       dockerfile: ./Dockerfile
-    command: sh -c "yarn start"
+    command: sh -c "yarn dev"
     ports:
       - "8080:8080"
     volumes:

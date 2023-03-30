@@ -10,8 +10,8 @@
     "build": "tsc -p .",
     "start": "NODE_ENV=dev node dist/index.js",
     "start-prod": "NODE_ENV=prod node dist/index.js",
-    "run-dev": "ts-node-dev src/index.ts",
-    "clean": "rm -f dist/bundle.js"
+    "dev": "ts-node-dev src/index.ts",
+    "clean": "rm -f dist/index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
