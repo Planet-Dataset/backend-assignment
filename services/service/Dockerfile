@@ -11,4 +11,4 @@ ENV MONGODB_URI="mongodb://home-assignment-db:27017/testdb"
 RUN yarn install
 RUN yarn build
 
-EXPOSE 8080
+EXPOSE 4200
